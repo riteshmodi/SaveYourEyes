@@ -1,1 +1,0 @@
-Main-Class: save.your.eyes.TwentyTwentyTest
