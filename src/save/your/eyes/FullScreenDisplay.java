@@ -23,6 +23,7 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 	private GraphicsDevice device;
 	private DisplayMode originalDM;
 	private JButton exit = new JButton("Exit");
+	private JButton out = new JButton("Out");
 	private boolean isFullScreen = false;
 
 	public FullScreenDisplay(GraphicsDevice device) {
@@ -33,31 +34,35 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// Make sure a DM is always selected in the list
 		exit.addActionListener(this);
+		out.addActionListener(this);
 	}
 	
 	public void closeComponent(){
 		device.setFullScreenWindow(null);
+		originalDM = null;
+		device = null;
 	}
 	
-	public void initComponents(Container c) {
-		setContentPane(c);
-		c.setLayout(new BorderLayout());
+	public void initComponents(Container container) {
+		setContentPane(container);
+		
+		container.setLayout(new BorderLayout());
 		// Current DM
 		JPanel currentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		c.add(currentPanel, BorderLayout.NORTH);
-		JLabel current = new JLabel("Current Display Mode : ");
+		container.add(currentPanel, BorderLayout.NORTH);
+		JLabel current = new JLabel("Please look at some target 20 feet away !! ");
+		current.setFont(new Font("Serif", Font.BOLD, 50));
 		currentPanel.add(current);
 		
 		// Exit
 		JPanel modesPanel = new JPanel(new GridLayout(1, 2));
-		c.add(modesPanel, BorderLayout.CENTER);
-		JPanel controlsPanelA = new JPanel(new BorderLayout());
-		modesPanel.add(controlsPanelA);
-		JPanel controlsPanelB = new JPanel(new GridLayout(2, 1));
-		controlsPanelA.add(controlsPanelB, BorderLayout.NORTH);
+		container.add(modesPanel, BorderLayout.CENTER);
+		
 		JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		controlsPanelB.add(exitPanel);
+		modesPanel.add(exitPanel);
+		exitPanel.add(out);
 		exitPanel.add(exit);
+		
 		
 	}
 	public void begin() {
@@ -81,6 +86,9 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 		if (source == exit) {
 			device.setDisplayMode(originalDM);
 			System.exit(0);
+		}
+		if (source == out) {
+			closeComponent();
 		}
 	}
 	
