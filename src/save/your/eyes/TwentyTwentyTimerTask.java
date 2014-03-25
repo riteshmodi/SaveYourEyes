@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class TwentyTwentyTimerTask extends TimerTask{
 	
-	//private final GraphicsDevice graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	private final GraphicsDevice graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	//private final FullScreenDisplay fullScreenDisplay = new FullScreenDisplay(graphicsDevice);
 	
 	@Override
@@ -16,7 +16,7 @@ public class TwentyTwentyTimerTask extends TimerTask{
 	}
 	
 	private void unitOfTask(long delayPeriodInSeconds) {
-		GraphicsDevice graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		//GraphicsDevice graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		FullScreenDisplay fullScreenDisplay = new FullScreenDisplay(graphicsDevice);
 		fullScreenDisplay.initComponents(fullScreenDisplay.getContentPane());
 		fullScreenDisplay.begin();
@@ -27,8 +27,6 @@ public class TwentyTwentyTimerTask extends TimerTask{
 		}
 		fullScreenDisplay.closeComponent();
 		fullScreenDisplay = null;
-		graphicsDevice = null;
+		//graphicsDevice = null;
 	}
-	
-
 }
