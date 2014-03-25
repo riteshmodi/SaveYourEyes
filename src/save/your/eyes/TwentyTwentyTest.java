@@ -10,9 +10,13 @@ public class TwentyTwentyTest {
 	//private static final TimerTask timerTask = new TwentyTwentyTimerTask();
 
 	public static void main(String[] args) {
+		int timePeriodInMinutes = 25,initialDelay = 0;
+		if(args.length>0){
+			timePeriodInMinutes = Integer.parseInt(args[0]);
+		}
 		TimerTask timerTask = new TwentyTwentyTimerTask();
-		scheduler.scheduleAtFixedRate(timerTask, 0, 25, TimeUnit.MINUTES);
-        System.out.println("TimerTask started");
+		scheduler.scheduleAtFixedRate(timerTask, initialDelay, timePeriodInMinutes, TimeUnit.MINUTES);
+        	System.out.println("TimerTask started");
 	}
 
 }
