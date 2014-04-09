@@ -39,8 +39,9 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 	
 	public void closeComponent(){
 		device.setFullScreenWindow(null);
-		originalDM = null;
-		device = null;
+		dispose();
+		//originalDM = null;
+		//device = null;
 	}
 	
 	public void initComponents(Container container) {
@@ -48,11 +49,11 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 		
 		container.setLayout(new BorderLayout());
 		// Current DM
-		JPanel currentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		container.add(currentPanel, BorderLayout.NORTH);
-		JLabel current = new JLabel("Please look at some target 20 feet away !! ");
-		current.setFont(new Font("Serif", Font.BOLD, 50));
-		currentPanel.add(current);
+		JPanel topCommentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		container.add(topCommentPanel, BorderLayout.NORTH);
+		JLabel lookAwayComment = new JLabel("Please look at some target 20 feet away !! ");
+		lookAwayComment.setFont(new Font("Serif", Font.BOLD, 50));
+		topCommentPanel.add(lookAwayComment);
 		
 		// Exit
 		JPanel modesPanel = new JPanel(new GridLayout(1, 2));
@@ -62,6 +63,12 @@ public class FullScreenDisplay extends JFrame implements ActionListener{
 		modesPanel.add(exitPanel);
 		exitPanel.add(out);
 		exitPanel.add(exit);
+		
+		JPanel bottomCommentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		container.add(bottomCommentPanel, BorderLayout.PAGE_END);
+		JLabel washEyesComment = new JLabel("Wash your Eyes !!");
+		washEyesComment.setFont(new Font("Serif", Font.BOLD, 50));
+		bottomCommentPanel.add(washEyesComment);
 		
 		
 	}
